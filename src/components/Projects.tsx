@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: "A full-featured e-commerce platform with product catalog, shopping cart, and secure checkout system.",
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
     githubLink: "https://github.com/vimaldharshan07/ecommerce",
-    liveLink: "https://vimalecommerce.netlify.app/",
+    liveLink: "https://vimalecommerce.netlify.app",
     tags: ["React", "Node.js", "Tailwindcss"]
   },
   {
