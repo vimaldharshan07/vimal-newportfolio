@@ -1,34 +1,133 @@
-import { Lock } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Github, Globe, ArrowUpRight } from 'lucide-react';
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  githubLink: string;
+  liveLink: string;
+  tags: string[];
+}
+
+const projects: Project[] = [
+  {
+    title: "College Symposium Website",
+    description: "A dynamic website for college technical symposium featuring event details, registration, and schedule management.",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+    githubLink: "https://github.com/vimaldharshan07/symposium",
+    liveLink: "https://symposium-demo.netlify.app",
+    tags: ["React", "Tailwind CSS", "Node.js"]
+  },
+  {
+    title: "E-commerce Website",
+    description: "A full-featured e-commerce platform with product catalog, shopping cart, and secure checkout system.",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
+    githubLink: "https://github.com/vimaldharshan07/ecommerce",
+    liveLink: "https://ecommerce-demo.netlify.app",
+    tags: ["React", "Redux", "Node.js", "MongoDB"]
+  },
+  {
+    title: "College Website",
+    description: "Modern college website with course information, faculty profiles, and student portal integration.",
+    image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800",
+    githubLink: "https://github.com/vimaldharshan07/college",
+    liveLink: "https://college-demo.netlify.app",
+    tags: ["React", "Tailwind CSS", "Express.js"]
+  }
+];
 
 export default function Projects() {
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Handle mouse enter/leave for the entire container
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  // Clone projects for seamless loop
+  const allProjects = [...projects, ...projects, ...projects];
+
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-slate-900">
+    <section id="projects" className="py-20 bg-white dark:bg-slate-900 overflow-hidden">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-4">
-          <span className="gradient-text">Projects Coming Soon</span>
+          <span className="gradient-text">Featured Projects</span>
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-          Exciting projects are in development. Stay tuned for updates!
+          Here are some of my recent projects that showcase my development skills
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((_, index) => (
-            <div
-              key={index}
-              className="relative group overflow-hidden rounded-xl bg-gray-100 dark:bg-slate-800/50 backdrop-blur-sm"
+        <div className="relative" ref={containerRef}>
+          <div 
+            className="overflow-hidden"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div 
+              className={`flex gap-8 transition-transform duration-300 ${
+                !isPaused ? 'animate-smooth-scroll' : ''
+              }`}
             >
-              <div className="aspect-video w-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center">
-                <Lock className="text-gray-400 dark:text-gray-500 w-12 h-12" />
-              </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <p className="text-white text-lg font-semibold mb-2">Coming Soon</p>
-                  <p className="text-gray-300 text-sm">Project under development</p>
+              {allProjects.map((project, index) => (
+                <div
+                  key={index}
+                  className="min-w-[350px] md:min-w-[400px] group"
+                >
+                  <div className="relative overflow-hidden rounded-xl bg-white dark:bg-slate-800 shadow-xl transition-all duration-500 hover:scale-105">
+                    <div className="aspect-video relative overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                          <div className="flex gap-3 mb-3">
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition-colors duration-300"
+                            >
+                              <Github size={20} />
+                            </a>
+                            <a
+                              href={project.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition-colors duration-300"
+                            >
+                              <Globe size={20} />
+                            </a>
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {project.tags.map((tag, tagIndex) => (
+                              <span
+                                key={tagIndex}
+                                className="px-2 py-1 text-xs rounded-full bg-white/20"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
+                        {project.title}
+                        <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
