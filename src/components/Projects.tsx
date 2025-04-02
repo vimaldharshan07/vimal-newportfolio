@@ -65,7 +65,7 @@ export default function Projects() {
             onMouseLeave={handleMouseLeave}
           >
             <div 
-              className={`flex gap-8 transition-transform duration-200 ${
+              className={`flex gap-8 transition-transform duration-300 ${
                 !isPaused ? 'animate-smooth-scroll' : ''
               }`}
             >
