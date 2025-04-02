@@ -17,7 +17,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
     githubLink: "https://github.com/vimaldharshan07/symposium",
     liveLink: "https://symposium-demo.netlify.app",
-    tags: ["React", "Tailwind CSS", "Node.js"]
+    tags: ["HTML", "CSS", "js"]
   },
   {
     title: "E-commerce Website",
@@ -25,7 +25,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
     githubLink: "https://github.com/vimaldharshan07/ecommerce",
     liveLink: "https://ecommerce-demo.netlify.app",
-    tags: ["React", "Redux", "Node.js", "MongoDB"]
+    tags: ["React", "Node.js"]
   },
   {
     title: "College Website",
@@ -33,7 +33,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800",
     githubLink: "https://github.com/vimaldharshan07/college",
     liveLink: "https://college-demo.netlify.app",
-    tags: ["React", "Tailwind CSS", "Express.js"]
+    tags: ["React", "Tailwind CSS", "Framer"]
   }
 ];
 
@@ -65,7 +65,7 @@ export default function Projects() {
             onMouseLeave={handleMouseLeave}
           >
             <div 
-              className={`flex gap-8 transition-transform duration-300 ${
+              className={`flex gap-8 transition-transform duration-200 ${
                 !isPaused ? 'animate-smooth-scroll' : ''
               }`}
             >
