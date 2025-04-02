@@ -63,7 +63,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-3xl transform -rotate-6 opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
             <div className="relative h-full rounded-3xl overflow-hidden">
               <img
-                src="/path/to/your/image.jpg"
+                src="../public/images/vimal_edited.jpeg"
                 alt="Vimal"
                 className="w-full h-full object-cover"
               />
