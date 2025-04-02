@@ -15,8 +15,8 @@ const projects: Project[] = [
     title: "College Symposium Website",
     description: "A dynamic website for college technical symposium featuring event details, registration, and schedule management.",
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
-    githubLink: "https://github.com/vimaldharshan07/symposium",
-    liveLink: "https://symposium-demo.netlify.app",
+    githubLink: "https://github.com/vimaldharshan07/AvcSymposium",
+    liveLink: "https://avcsymposyum.netlify.app",
     tags: ["Html", "CSS", "js"]
   },
   {
