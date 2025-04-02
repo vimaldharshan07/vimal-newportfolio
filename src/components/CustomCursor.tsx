@@ -1,24 +1,37 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number }>>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     let animationFrameId: number;
     let lastTime = Date.now();
 
     const updateCursor = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
       
-      // Add new particles with varying sizes
-      if (Date.now() - lastTime > 50) { // Limit particle creation rate
+      if (Date.now() - lastTime > 50) {
         const newParticles = Array.from({ length: 2 }, () => ({
           id: Date.now() + Math.random(),
           x: e.clientX + (Math.random() * 20 - 10),
           y: e.clientY + (Math.random() * 20 - 10),
-          size: Math.random() * 6 + 4 // Particles of different sizes
+          size: Math.random() * 6 + 4
         }));
         setParticles(prev => [...prev, ...newParticles]);
         lastTime = Date.now();
@@ -49,7 +62,9 @@ export default function CustomCursor() {
       window.removeEventListener('mouseover', updateHoverState);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <>
