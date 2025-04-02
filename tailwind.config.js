@@ -9,6 +9,7 @@ export default {
         'float': 'float 8s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
         'sparkle': 'sparkle 2s ease-in-out infinite',
+        'smooth-scroll': 'smooth-scroll 30s linear infinite',
       },
       keyframes: {
         'gradient-shift': {
@@ -27,6 +28,10 @@ export default {
         sparkle: {
           '0%, 100%': { opacity: '0', transform: 'scale(0)' },
           '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'smooth-scroll': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-100% / 3))' },
         },
       },
       backgroundImage: {
