@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowDown, Code, Sparkles, Rocket } from 'lucide-react';
 
 export default function Hero() {
@@ -61,12 +60,20 @@ export default function Hero() {
           <div className="relative w-64 h-64 md:w-80 md:h-80">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-3xl transform rotate-6 opacity-20 animate-pulse"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-3xl transform -rotate-6 opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="relative h-full rounded-3xl overflow-hidden">
-              <img
-                src="../public/images/vimal_edited.jpg"
-                alt="Vimal"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative h-full bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl">
+              <div className="h-full flex flex-col justify-center space-y-6">
+                <div className="space-y-2">
+                  <div className="h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full w-3/4"></div>
+                  <div className="h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-1/2"></div>
+                </div>
+                <div className="flex items-center justify-center">
+                  <Code className="w-20 h-20 text-indigo-500" />
+                </div>
+                <div className="space-y-2">
+                  <div className="h-3 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-full w-2/3"></div>
+                  <div className="h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full w-5/6"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
